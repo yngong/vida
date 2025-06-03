@@ -1,0 +1,11 @@
+[console_scripts]
+vida-combine-files = vida.combine_two_files:main
+vida-downsample = vida.downsampling_gisaid:main
+vida-extract-cds = vida.extract_cds:main
+vida-filter-N = vida.filter_fasta_by_N_content:main
+vida-filter-complete = vida.filter_complete_genomes:main
+vida-get-seq = vida.get_seq_by_list:main
+vida-remove-punct = vida.remove_punct:main
+vida-rename-header = vida.rename_fasta_header:main
+vida-restore-header = vida.restore_fasta_header:main
+vida-split-segment = vida.split_gisaid_by_segment:main

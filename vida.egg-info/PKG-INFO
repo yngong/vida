@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: vida
+Version: 0.1.0
+Summary: Virus Data Analysis Toolkit (VIDA)
+Home-page: https://github.com/yourusername/vida
+Author: Yu-Nong Gong
+Author-email: your.email@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-python
+Dynamic: summary
+
+# VIDA: Virus Data Analysis Toolkit

@@ -1,0 +1,12 @@
+name: vida
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+  - r
+dependencies:
+  - python=3.9
+  - nextclade
+  - mafft
+  - bioconda::fasttree
+  - biopython
