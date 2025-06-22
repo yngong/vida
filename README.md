@@ -1,62 +1,73 @@
 # VIDA: Virus Data Analysis Toolkit
 
-**VIDA** (Virus Data Analysis Toolkit) is a modular and extensible toolkit for analyzing viral sequences and phylogenies. It includes streamlined workflows for structure prediction, multiple sequence alignment, tree building, and visualization, especially designed for RNA viruses like Influenza, SARS-CoV-2, and Enterovirus.
+**VIDA** (Virus Data Analysis Toolkit) is a modular and extensible Python package designed for the analysis of viral genomic sequences and phylogenies. It offers streamlined CLI tools for preprocessing, alignment, and tree-building, specifically geared towards RNA viruses like Influenza, SARS-CoV-2, and Enterovirus.
 
 ---
 
-## 🚀 Features
+## 🚀 Features (Python Modules)
 
-- Fast multiple sequence alignment with MAFFT
-- Rapid phylogenetic tree inference with FastTree
-- Seamless integration with Nextclade for clade assignment
-- Structural annotation and docking (via optional plugins)
-- Extensible Python modules for sequence parsing and batch processing
-- Ready-to-use CLI and visualization functions
+* 🧬 **FASTA Header Cleaning**
+  Remove punctuation from headers (except `|`, `>`, `/`, `-`, `_`) to ensure downstream compatibility.
+
+* 🔹 **Segment Splitting**
+  Split multi-segment FASTA files (e.g., from GISAID) into separate files by segment.
+
+* 💩 **N-content Filtering**
+  Filter sequences with excessive ambiguous bases (`N`) using a custom threshold.
+
+* 🔽 **Downsampling**
+  Subsample sequences (e.g., by region or time) using controlled stratified sampling.
+
+* 🎮 **Completeness Check**
+  Detect and filter out incomplete viral genomes.
+
+* 🧬 **CDS Extraction**
+  Extract coding sequences based on alignment or reference structure.
+
+* 📃 **Header Renaming & Restoration**
+  Rename headers for clean alignments, and restore them post-analysis using mapping files.
+
+* 🔢 **List-Based Selection**
+  Extract specific sequences from a FASTA file based on a predefined list.
+
+* 📂 **Two-File Combining Utility**
+  Merge tabular files (e.g., clade and metadata) into a single report.
+
+* ⚙️ **Modular CLI Design**
+  Each tool is available as a standalone module under `vida`, e.g., `python -m vida.remove_punct`
 
 ---
 
 ## 🛠️ Installation
 
-## Clone and install locally (development mode)
+### Prerequisites
 
-**Prerequisites**:
-Before proceeding, ensure you have either **[Conda](https://docs.conda.io/en/latest/miniconda.html)** or **[Mamba](https://mamba.readthedocs.io/en/latest/)** installed on your system.
+Ensure you have either [Conda](https://docs.conda.io/en/latest/miniconda.html) or [Mamba](https://mamba.readthedocs.io/en/latest/) installed.
+We recommend [Micromamba](https://mamba.readthedocs.io/en/latest/installation.html) for lightweight environments.
 
-If not, install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or use [Micromamba](https://mamba.readthedocs.io/en/latest/installation.html) as a lightweight alternative.
-
----
-
-1. **Clone the repository:**
+### Clone and Install (Development Mode)
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/yngong/vida.git
 cd vida
-```
 
-2. **(Optional but recommended) Install Mamba in the base environment:**
-
-```bash
+# 2. (Optional) Install Mamba
 conda install -n base -c conda-forge mamba
-```
 
-3. **Create and activate the environment:**
-
-```bash
+# 3. Create and activate the environment
 mamba env create -f vida_env.yml
 conda activate vida
-```
 
-4. **Install the package in development mode:**
-
-```bash
+# 4. Install VIDA as an editable package
 pip install -e .
 ```
 
-This installs `vida` as an editable Python package. Any changes you make to the source code will be reflected immediately without reinstalling.
+> This installs `vida` as an editable Python package. Any changes to the source code will take effect immediately.
 
 ---
 
-## Package Structure
+## 📁 Package Structure
 
 ```
 vida/
@@ -75,9 +86,9 @@ vida/
 
 ---
 
-## Usage
+## ⚖️ Usage
 
-Each module can be executed using the command-line interface:
+Run each module using Python's `-m` flag:
 
 ```bash
 python -m vida.<module_name> [options]
@@ -85,38 +96,45 @@ python -m vida.<module_name> [options]
 
 ### Examples
 
-1. **Remove punctuation from FASTA headers:**
-
 ```bash
+# Remove punctuation from FASTA headers
 python -m vida.remove_punct -i input.fasta -o output.fasta
-```
 
-2. **Rename headers for alignment:**
-
-```bash
+# Rename headers for clean alignments
 python -m vida.rename_fasta_header -i aligned.fas -o renamed.fas -m renamed.map
+
+# Filter by N-content
+python -m vida.filter_fasta_by_N_content -i input.fas -t 3 -k kept.fas -r removed.fas
 ```
 
 ---
 
-## Example Workflow (run\_flu\_pipeline.sh)
+## 📃 Example Shell Workflow: `run_flu_pipeline.sh`
 
-1. Clean original FASTA and split by segment
-2. Filter sequences (high N content, non-full-length genomes)
-3. Subsample by region or time
-4. Align using MAFFT
-5. Build trees using FastTree
-6. Annotate clades using Nextclade
-7. Integrate clade and metadata info into summary reports
+This shell script provides an end-to-end analysis pipeline:
 
----
-
-## Authors & Contributions
-
-Developed by the laboratory of [Yu-Nong Gong](https://example.com), focused on RNA virus evolution and surveillance. Contributions via pull requests or issues are welcome.
+1. Clean FASTA headers
+2. Split sequences by segment
+3. Filter by `N` content and completeness
+4. Subsample to reduce dataset size
+5. Align with MAFFT
+6. Build phylogenetic trees with FastTree
+7. Assign clades using Nextclade
+8. Rename and restore headers
+9. Combine clade and metadata for downstream visualization
 
 ---
 
-## License
+## 👨‍💼 Author & Contributions
 
-MIT License
+Developed and maintained by the laboratory of [Yu-Nong Gong](https://example.com), focusing on viral evolution and genomic epidemiology.
+
+Contributions are welcome! Please use GitHub Issues or submit a pull request.
+
+---
+
+## 📚 License
+
+This project is licensed under the MIT License.
+
+> MIT License allows reuse, modification, and distribution with minimal restrictions. It's compatible with both open and closed-source use cases.

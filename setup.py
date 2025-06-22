@@ -6,7 +6,7 @@
 # │   ├── __init__.py
 # │   ├── remove_punct.py
 # │   ├── split_gisaid_by_segment.py
-# │   ├── filter_fasta_by_N_content.py
+# │   ├── filter_fasta_by_n_content.py
 # │   ├── downsampling_gisaid.py
 # │   ├── filter_complete_genomes.py
 # │   ├── get_seq_by_list.py
@@ -38,7 +38,7 @@ setup(
         'console_scripts': [
             'vida-remove-punct=vida.remove_punct:main',
             'vida-split-segment=vida.split_gisaid_by_segment:main',
-            'vida-filter-N=vida.filter_fasta_by_N_content:main',
+            'vida-filter-N=vida.filter_fasta_by_n_content:main',
             'vida-downsample=vida.downsampling_gisaid:main',
             'vida-filter-complete=vida.filter_complete_genomes:main',
             'vida-get-seq=vida.get_seq_by_list:main',

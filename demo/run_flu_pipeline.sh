@@ -2,21 +2,22 @@
 cd 0_raw
 
 # Step 1: Remove unwanted punctuation from FASTA headers
+gunzip gisaid_epiflu_sequence.fasta.zip
 python -m vida.remove_punct -i gisaid_epiflu_sequence.fasta -o output.fas
 
 # Step 2: Split GISAID multi-segment FASTA into individual segments
 python -m vida.split_gisaid_by_segment -i output.fas -d segment
 
 # Step 3: Filter HA segment by N content threshold
-python -m vida.filter_fasta_by_N_content -i segment/HA.fas -t 3 -k Kept_HA.fas -r Removed_HA.fas
+## python -m vida.filter_fasta_by_n_content -i segment/HA.fas -t 3 -k Kept_HA.fas -r Removed_HA.fas
 
 # Step 4: Downsample the HA sequences
-python -m vida.downsampling_gisaid -i Kept_HA.fas -c 2 -o passed_HA.fas
+## python -m vida.downsampling_gisaid -i Kept_HA.fas -c 2 -o passed_HA.fas
 
 # Step 5: Replace raw HA with passed HA and filter for complete genomes
 cd segment
-mv HA.fas raw_HA.fas
-cp ../passed_HA.fas HA.fas
+## mv HA.fas raw_HA.fas
+## cp ../passed_HA.fas HA.fas
 python -m vida.filter_complete_genomes -o ../new
 cd ..
 
