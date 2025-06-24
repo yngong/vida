@@ -125,11 +125,18 @@ This shell script provides an end-to-end analysis pipeline:
 
 ---
 
+## ⚙️ Demo & Data Folders
+* demo/ Contains example output files for reference. You can use this folder to explore the expected results of a typical pipeline run.
+
+* raw/ Contains the original input sequences and directory structures prior to processing. This can be used to replicate the full test pipeline.
+
+* ack_table/Supplementary Table 1_acknowledgement_table.xlsx Supplementary Table 1 in our manuscript. We gratefully acknowledge the authors, originating and submitting laboratories of the sequences from GISAID’s EpiFlu™ Database on which this research is based. The list is detailed below.
+
 ## 👨‍💼 Author & Contributions
 
-Developed and maintained by the laboratory of [Yu-Nong Gong](https://example.com), focusing on viral evolution and genomic epidemiology.
+VIDA is developed and maintained by [Yu-Nong Gong](https://example.com), whose research focuses on viral evolution and genomic epidemiology. Contributions are welcome! For feature suggestions, bug reports, or collaboration inquiries, please contact [me](https://example.com).
 
-Contributions are welcome! Please use GitHub Issues or submit a pull request.
+This toolkit was applied in the study titled "Visualizing and Deciphering Influenza A(H1N1)pdm09 Reassortment in the 2019–2023 Seasons", which is currently under review. The work demonstrates the utility of VIDA in analyzing reassortment patterns in influenza viruses.
 
 ---
 
