@@ -6,34 +6,34 @@
 
 ## 🚀 Features (Python Modules)
 
-* 🧬 **FASTA Header Cleaning**
+* **FASTA Header Cleaning**
   Remove punctuation from headers (except `|`, `>`, `/`, `-`, `_`) to ensure downstream compatibility.
 
-* 🔹 **Segment Splitting**
+* **Segment Splitting**
   Split multi-segment FASTA files (e.g., from GISAID) into separate files by segment.
 
-* 💩 **N-content Filtering**
+* **N-content Filtering**
   Filter sequences with excessive ambiguous bases (`N`) using a custom threshold.
 
-* 🔽 **Downsampling**
+* **Downsampling**
   Subsample sequences (e.g., by region or time) using controlled stratified sampling.
 
-* 🎮 **Completeness Check**
+* **Completeness Check**
   Detect and filter out incomplete viral genomes.
 
-* 🧬 **CDS Extraction**
+* **CDS Extraction**
   Extract coding sequences based on alignment or reference structure.
 
-* 📃 **Header Renaming & Restoration**
+* **Header Renaming & Restoration**
   Rename headers for clean alignments, and restore them post-analysis using mapping files.
 
-* 🔢 **List-Based Selection**
+* **List-Based Selection**
   Extract specific sequences from a FASTA file based on a predefined list.
 
-* 📂 **Two-File Combining Utility**
+* **Two-File Combining Utility**
   Merge tabular files (e.g., clade and metadata) into a single report.
 
-* ⚙️ **Modular CLI Design**
+* **Modular CLI Design**
   Each tool is available as a standalone module under `vida`, e.g., `python -m vida.remove_punct`
 
 ---
