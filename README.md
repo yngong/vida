@@ -123,6 +123,8 @@ This shell script provides an end-to-end analysis pipeline:
 8. Rename and restore headers
 9. Combine clade and metadata for downstream visualization
 
+⚠️ FastTree Recommendation: For accurate phylogenetic inference, we recommend compiling the double-precision version of FastTree from the official source instead of using precompiled binaries.
+
 ---
 
 ## ⚙️ Demo & Data Folders
