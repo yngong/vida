@@ -7,31 +7,31 @@
 ## 🚀 Features (Python Modules)
 
 * **FASTA Header Cleaning**
-  Remove punctuation from headers (except `|`, `>`, `/`, `-`, `_`) to ensure downstream compatibility.
+  Remove punctuation from headers (except `|`, `>`, `/`, `-`, `_`) to ensure downstream compatibility. File: vida/remove\_punct.py
 
 * **Segment Splitting**
-  Split multi-segment FASTA files (e.g., from GISAID) into separate files by segment.
+  Split multi-segment FASTA files (e.g., from GISAID) into separate files by segment. File: vida/split\_gisaid\_by\_segment.py
 
 * **N-content Filtering**
-  Filter sequences with excessive ambiguous bases (`N`) using a custom threshold.
+  Filter sequences with excessive ambiguous bases (`N`) using a custom threshold. File: vida/filter\_n\_content.py
 
 * **Downsampling**
-  Subsample sequences (e.g., by region or time) using controlled stratified sampling.
-
+  Subsample sequences (e.g., by region or time) using controlled stratified sampling. File: vida/downsampling_gisaid.py
+  
 * **Completeness Check**
-  Detect and filter out incomplete viral genomes.
+  Detect and filter out incomplete viral genomes. File: vida/filter\_complete\_genomes.py
 
 * **CDS Extraction**
-  Extract coding sequences based on alignment or reference structure.
+  Extract coding sequences based on alignment or reference structure. File: vida/extract_cds.py
 
 * **Header Renaming & Restoration**
-  Rename headers for clean alignments, and restore them post-analysis using mapping files.
+  Rename headers for clean alignments, and restore them post-analysis using mapping files. Files: vida/rename\_fasta\_header.py and vida/restore\_fasta\_header.py
 
 * **List-Based Selection**
-  Extract specific sequences from a FASTA file based on a predefined list.
+  Extract specific sequences from a FASTA file based on a predefined list. File: vida/get\_seq\_by\_list.py
 
 * **Two-File Combining Utility**
-  Merge tabular files (e.g., clade and metadata) into a single report.
+  Merge tabular files (e.g., clade and metadata) into a single report. File: vida/combine\_two\_files.py
 
 * **Modular CLI Design**
   Each tool is available as a standalone module under `vida`, e.g., `python -m vida.remove_punct`
@@ -125,6 +125,16 @@ This shell script provides an end-to-end analysis pipeline:
 
 ⚠️ FastTree Recommendation: For accurate phylogenetic inference, we recommend compiling the double-precision version of FastTree from the official source instead of using precompiled binaries.
 
+📦 Output Summary:
+
+* Phylogenetic Trees
+	* Location: 2_trees/restored_\*.nwk
+	* Description: Newick-format tree files containing clade-assigned, header-restored phylogenies for each segment.
+
+* Clade Assignments
+  * Location: 3_clade_designation/clade.csv
+  * Description: CSV file with Nextclade-assigned clades, sequence IDs, and quality metrics.
+
 ---
 
 ## ⚙️ Demo & Data Folders
@@ -132,13 +142,13 @@ This shell script provides an end-to-end analysis pipeline:
 
 * raw/ Contains the original input sequences and directory structures prior to processing. This can be used to replicate the full test pipeline.
 
-* ack_table/Supplementary Table 1_acknowledgement_table.xlsx Supplementary Table 1 in our manuscript. We gratefully acknowledge the authors, originating and submitting laboratories of the sequences from GISAID’s EpiFlu™ Database on which this research is based. The list is detailed below.
+* ack_table/Supplementary Table 1_acknowledgement_table.xlsx Supplementary Table 1 in our manuscript. I gratefully acknowledge the authors, originating and submitting laboratories of the sequences from GISAID’s EpiFlu™ Database on which this research is based. The list is detailed below.
 
 ## 👨‍💼 Author & Contributions
 
-VIDA is developed and maintained by [Yu-Nong Gong](https://example.com), whose research focuses on viral evolution and genomic epidemiology. Contributions are welcome! For feature suggestions, bug reports, or collaboration inquiries, please contact [me](https://example.com).
+VIDA is developed and maintained by [Yu-Nong Gong](https://example.com). Contributions are welcome!
 
-This toolkit was applied in the study titled "Visualizing and Deciphering Influenza A(H1N1)pdm09 Reassortment in the 2019–2023 Seasons", which is currently under review. The work demonstrates the utility of VIDA in analyzing reassortment patterns in influenza viruses.
+This toolkit was applied in the manuscript titled "Visualizing and Deciphering Influenza A(H1N1)pdm09 Reassortment in the 2019–2023 Seasons", which is currently under review. The work demonstrates the utility of VIDA in analyzing reassortment patterns in influenza viruses.
 
 ---
 
