@@ -1,39 +1,48 @@
 # VIDA: Virus Data Analysis Toolkit
 
-**VIDA** (Virus Data Analysis Toolkit) is a modular and extensible Python package designed for the analysis of viral genomic sequences and phylogenies. It offers streamlined CLI tools for preprocessing, alignment, and tree-building, specifically geared towards RNA viruses like Influenza, SARS-CoV-2, and Enterovirus.
+**VIDA** (Virus Data Analysis Toolkit) is a modular and extensible Python package designed for preprocessing and analyzing viral genomic sequences. It includes a collection of reusable Python modules for data cleaning, filtering, alignment preparation, and CDS extraction of genomic sequences. In addition to the Python tools, I also provide accompanying shell scripts to automate the influenza genome analysis pipeline.
 
 ---
 
 ## 🚀 Features (Python Modules)
 
-* **FASTA Header Cleaning**
-  Remove punctuation from headers (except `|`, `>`, `/`, `-`, `_`) to ensure downstream compatibility. File: vida/remove\_punct.py
+* **FASTA Header Cleaning**  
+  Remove punctuation from headers (except `|`, `>`, `/`, `-`, `_`) to ensure downstream compatibility.  
+  *File: `vida/remove_punct.py`*
 
-* **Segment Splitting**
-  Split multi-segment FASTA files (e.g., from GISAID) into separate files by segment. File: vida/split\_gisaid\_by\_segment.py
+* **Header Renaming & Restoration**  
+  Rename headers for clean alignments, and restore them post-analysis using mapping files.  
+  *Files: `vida/rename_fasta_header.py` and `vida/restore_fasta_header.py`*
 
-* **N-content Filtering**
-  Filter sequences with excessive ambiguous bases (`N`) using a custom threshold. File: vida/filter\_n\_content.py
+* **Segment Splitting**  
+  Split multi-segment FASTA files (e.g., from GISAID) into separate files by segment.  
+  *File: `vida/split_gisaid_by_segment.py`*
 
-* **Downsampling**
-  Subsample sequences (e.g., by region or time) using controlled stratified sampling. File: vida/downsampling_gisaid.py
-  
-* **Completeness Check**
-  Detect and filter out incomplete viral genomes. File: vida/filter\_complete\_genomes.py
+* **List-Based Selection**  
+  Extract specific sequences from a FASTA file based on a predefined list.  
+  *File: `vida/get_seq_by_list.py`*
 
-* **CDS Extraction**
-  Extract coding sequences based on alignment or reference structure. File: vida/extract_cds.py
+* **N-content Filtering**  
+  Filter sequences with excessive ambiguous bases (`N`) using a custom threshold.  
+  *File: `vida/filter_n_content.py`*
 
-* **Header Renaming & Restoration**
-  Rename headers for clean alignments, and restore them post-analysis using mapping files. Files: vida/rename\_fasta\_header.py and vida/restore\_fasta\_header.py
+* **Completeness Check**  
+  Detect and filter out incomplete viral genomes.  
+  *File: `vida/filter_complete_genomes.py`*
 
-* **List-Based Selection**
-  Extract specific sequences from a FASTA file based on a predefined list. File: vida/get\_seq\_by\_list.py
+* **Downsampling**  
+  Subsample sequences (e.g., by region or time) using controlled stratified sampling.  
+  *File: `vida/downsampling_gisaid.py`*
 
-* **Two-File Combining Utility**
-  Merge tabular files (e.g., clade and metadata) into a single report. File: vida/combine\_two\_files.py
+* **CDS Extraction**  
+  Extract coding sequences based on alignment or reference structure.  
+  *File: `vida/extract_cds.py`*
 
-* **Modular CLI Design**
+* **Two-File Combining Utility**  
+  Merge tabular files (e.g., clade and metadata) into a single report.  
+  *File: `vida/combine_two_files.py`*
+
+* **Modular CLI Design**  
   Each tool is available as a standalone module under `vida`, e.g., `python -m vida.remove_punct`
 
 ---
@@ -42,8 +51,7 @@
 
 ### Prerequisites
 
-Ensure you have either [Conda](https://docs.conda.io/en/latest/miniconda.html) or [Mamba](https://mamba.readthedocs.io/en/latest/) installed.
-We recommend [Micromamba](https://mamba.readthedocs.io/en/latest/installation.html) for lightweight environments.
+Ensure you have either [Conda](https://docs.conda.io/en/latest/miniconda.html) or [Mamba](https://mamba.readthedocs.io/en/latest/) installed. We recommend [Micromamba](https://mamba.readthedocs.io/en/latest/installation.html) for lightweight environments.
 
 ### Clone and Install (Development Mode)
 
@@ -109,9 +117,9 @@ python -m vida.filter_fasta_by_N_content -i input.fas -t 3 -k kept.fas -r remove
 
 ---
 
-## 📃 Example Shell Workflow: `run_flu_pipeline.sh`
+## 📃 Example Shell Workflow: 
 
-This shell script provides an end-to-end analysis pipeline:
+This shell script `run_flu_pipeline.sh` in flu folder provides an end-to-end analysis pipeline:
 
 1. Clean FASTA headers
 2. Split sequences by segment
@@ -125,7 +133,7 @@ This shell script provides an end-to-end analysis pipeline:
 
 ⚠️ FastTree Recommendation: For accurate phylogenetic inference, we recommend compiling the double-precision version of FastTree from the official source instead of using precompiled binaries.
 
-📦 Output Summary:
+📦 Output and additional files for running CatTrees app:
 
 * Phylogenetic Trees
 	* Location: 2_trees/restored_\*.nwk
@@ -135,14 +143,16 @@ This shell script provides an end-to-end analysis pipeline:
   * Location: 3_clade_designation/clade.csv
   * Description: CSV file with Nextclade-assigned clades, sequence IDs, and quality metrics.
 
+* Additional file needed for running CatTrees app
+  * Location: list of reassortment strain
+  * Description: one column file with reassortment strains. Please make sure "strain" as the header line.
+
 ---
 
-## ⚙️ Demo & Data Folders
-* demo/ Contains example output files for reference. You can use this folder to explore the expected results of a typical pipeline run.
-
+## ⚙️ flu folder
 * raw/ Contains the original input sequences and directory structures prior to processing. This can be used to replicate the full test pipeline.
 
-* ack_table/Supplementary Table 1_acknowledgement_table.xlsx Supplementary Table 1 in our manuscript. I gratefully acknowledge the authors, originating and submitting laboratories of the sequences from GISAID’s EpiFlu™ Database on which this research is based. The list is detailed below.
+* ack_table/Supplementary Table 1_acknowledgement_table.xlsx Supplementary Table 1 in our manuscript. We gratefully acknowledge the authors, originating and submitting laboratories of the sequences from GISAID’s EpiFlu™ Database on which this research is based.
 
 ## 👨‍💼 Author & Contributions
 
