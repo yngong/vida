@@ -144,7 +144,7 @@ This shell script `run_flu_pipeline.sh` in flu folder provides an end-to-end ana
   * Description: CSV file with Nextclade-assigned clades, sequence IDs, and quality metrics.
 
 * Additional file needed for running CatTrees app
-  * Location: list of reassortment strain
+  * A list of reassortment strain
   * Description: one column file with reassortment strains. Please make sure "strain" as the header line.
 
 ---
